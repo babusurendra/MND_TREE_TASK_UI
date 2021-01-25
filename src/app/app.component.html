@@ -1,0 +1,48 @@
+<div *ngIf='!isLoggedIn'>
+  <div class="row">
+    <div class="col-md-6">Email
+      <input type="text" [(ngModel)]="email">
+    </div>
+    <div class="col-md-6">password
+      <input type="password" [(ngModel)]="password">
+    </div>
+    <div>
+      <input type="button" value="Submit" (click)="this.login()">
+    </div>
+  </div>
+</div>
+
+<div *ngIf='isLoggedIn'>
+  <div ngIf='isAdmin'>
+    <!-- all user details for admin-->
+    <table>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <tr *ngFor="let user of users">
+        <td>
+          {{user.name}}
+        </td>
+        <td>
+          {{user.email}}
+        </td>
+        <td>
+          {{user.role}}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div ngIf='!isAdmin'>
+    <!--single user details-->
+    <div>
+      Name : {{this.users[0].name}}
+    </div>
+    <div>
+      Email : {{this.users[0].email}}
+    </div>
+    <div>
+      Role : {{this.users[0].role}}
+    </div>
+  </div>
+
+</div>
